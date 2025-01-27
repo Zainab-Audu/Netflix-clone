@@ -5,7 +5,7 @@ import "./Titlecards.css";
 
 
 
-const Titlecards = () => {
+const Titlecards = ({title,category}) => {
   const cardRef = useRef();
 
   const handlewheel = (event) => {
@@ -18,8 +18,7 @@ const Titlecards = () => {
   
   return (
     <div className="titlecards">
-      
-      <h2 className="">Popular on Netflix</h2>
+      <h2>{title?title:"Popular on Netflix"}</h2>
       <div className="card-list" ref={cardRef}>
         {card_data.map((card, index) => {
           return (
@@ -27,7 +26,7 @@ const Titlecards = () => {
               <img src={card.image} alt="" />
               <p>{card.name}</p>
             </div>
-          );  
+          );
         })}
       </div>
     </div>

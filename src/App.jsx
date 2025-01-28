@@ -1,7 +1,6 @@
 import Home from
   './pages/Home/Home'
-import Navbar from '../src/componenets/Navbar/Navbar'
-import Login from  './pages/Login/Login'
+import Login from '../src/pages/Login/Login'
 import { Routes, Route} from 'react-router-dom';
 
 

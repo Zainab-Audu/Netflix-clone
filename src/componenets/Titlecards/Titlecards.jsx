@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 
-import "./Titlecards.css"
+import "./Titlecards.css";
 
 const Titlecards = ({ title, category }) => {
-
   const [apiData, setApiData] = useState([]);
-  
+
   const cardRef = useRef();
 
   const options = {
@@ -17,7 +17,6 @@ const Titlecards = ({ title, category }) => {
     },
   };
 
-  
   const handlewheel = (event) => {
     event.preventDefault();
     cardRef.current.scrollLeft += event.deltaY;
@@ -35,15 +34,18 @@ const Titlecards = ({ title, category }) => {
 
     cardRef.current.addEventListener("wheel", handlewheel);
   }, []);
-  
+
   return (
     <div className="titlecards">
-      <h2>{title?title:"Popular on Netflix"}</h2>
+      <h2>{title ? title : "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardRef}>
         {apiData.map((card, index) => {
           return (
             <div className="card" key={index}>
-              <img src={`https://image.tmdb.org/t/p/w500` +card.backdrop_path} alt="" />
+              <img
+                src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
+                alt=""
+              />
               <p>{card.original_title}</p>
             </div>
           );
@@ -51,6 +53,16 @@ const Titlecards = ({ title, category }) => {
       </div>
     </div>
   );
+};
+
+Titlecards.propTypes = {
+  title: PropTypes.string,
+  category: PropTypes.string,
+};
+
+Titlecards.defaultProps = {
+  title: "Popular on Netflix",
+  category: "now_playing",
 };
 
 export default Titlecards;

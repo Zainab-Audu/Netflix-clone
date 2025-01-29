@@ -1,32 +1,29 @@
-import './Player.css'
-import back_arrow_icon from '../../assets/back_arrow_icon.png'
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import "./Player.css";
+import back_arrow_icon from "../../assets/back_arrow_icon.png";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Player = () => {
-  const { id } = useParams;
+  const { id } = useParams();
 
   const [apiData, setApiData] = useState({
     name: "",
     key: "",
     published_at: "",
     typeof: "",
+  });
 
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMDcyYzU5ZjI2ZThhODUxMjkyZWJjYTgwMjY2ZmE5NiIsIm5iZiI6MTczNzk5MzQwMC40MTkwMDAxLCJzdWIiOiI2Nzk3YWNiODI1ZDI5ODBmYjAyNDIyZDkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.shL3W-RlDivDzXx5qPDvpZvE7dk2XRakRsoQYMmgkOo",
+    },
+  };
 
-  })
-
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMDcyYzU5ZjI2ZThhODUxMjkyZWJjYTgwMjY2ZmE5NiIsIm5iZiI6MTczNzk5MzQwMC40MTkwMDAxLCJzdWIiOiI2Nzk3YWNiODI1ZDI5ODBmYjAyNDIyZDkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.shL3W-RlDivDzXx5qPDvpZvE7dk2XRakRsoQYMmgkOo",
-      },
-    };
-     
   useEffect(() => {
-    
     fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
       options
@@ -34,10 +31,7 @@ const Player = () => {
       .then((res) => res.json())
       .then((res) => setApiData(res.results[0]))
       .catch((err) => console.error(err));
-
-     },[])
-  
-    
+  }, []);
 
   return (
     <div className="player">
@@ -57,6 +51,6 @@ const Player = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Player
+export default Player;

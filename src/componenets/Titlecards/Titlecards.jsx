@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import "./Titlecards.css";
+import { Link } from "react-router-dom";
 
 const Titlecards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
+  
 
   const cardRef = useRef();
 
@@ -34,20 +36,20 @@ const Titlecards = ({ title, category }) => {
 
     cardRef.current.addEventListener("wheel", handlewheel);
   }, []);
-
+   console.log(apiData)
   return (
     <div className="titlecards">
       <h2>{title ? title : "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardRef}>
         {apiData.map((card, index) => {
           return (
-            <div className="card" key={index}>
+            <Link to={`/player/${card.id}`} className="card" key={index}>
               <img
                 src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
                 alt=""
               />
               <p>{card.original_title}</p>
-            </div>
+            </Link>
           );
         })}
       </div>

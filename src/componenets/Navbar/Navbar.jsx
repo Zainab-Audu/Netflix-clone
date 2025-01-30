@@ -1,9 +1,24 @@
 import "./Navbar.css";
 import netflixlogo1 from "../../assets/card/netflixlogo1.png";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const Navbar = () => {
+
+  const navRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 80) {
+        navRef.current.classList.add('nav-dark')
+      } else {
+        navRef.current.classList.remove("nav-dark");
+      }
+    })
+  },[])
+
   return (
-    <div className="navbar">
+    <div ref={navRef} className="navbar">
       <div className="navbar-left">
         <img src={netflixlogo1} alt="Netflix Logo" />
         <ul>
@@ -75,9 +90,7 @@ const Navbar = () => {
               d="m19.5 8.25-7.5 7.5-7.5-7.5"
             />
           </svg>
-          <div className="dropdown">sign up of Netflix
-
-          </div>
+          <div className="dropdown">sign up of Netflix</div>
         </div>
       </div>
     </div>

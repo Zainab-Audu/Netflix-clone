@@ -73,3 +73,62 @@ cursor: pointer;
 }
 
 
+@media (max-width:1024) {
+    .hero-caption .titlecard{
+        display: none;
+    }
+
+    .hero-btns{
+        margin-bottom:30px;
+
+    }
+}
+
+@media (max-width:800px) {
+    .hero-caption{
+        padding-left: 4%;
+    }
+    .hero-caption p{
+        font-size: 12px;
+        margin-bottom: 10px;
+
+    }
+    .caption-img{
+        margin-bottom: 10PX;
+        width: 40%;
+    }
+    .hero-btns .btn img{
+        width: 20px;
+
+    }
+    .more-cards{
+        padding-left: 4%;
+    }
+}
+@media (max-width:500px) {
+    .caption-img{
+        display: none;
+
+    }
+    .hero-btns .btn{
+        padding: 4px 10px;
+        gap: 5px;
+        font-size: 10px;
+    }
+}
+@media (max-width:800px) {
+    .titlecards{
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+    title-cards h2{
+        font-size: 20px;
+    
+    }
+    .card-list p{
+        font-size:12px;        
+        
+    }
+
+    
+}

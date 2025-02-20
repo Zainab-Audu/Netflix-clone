@@ -73,8 +73,8 @@ cursor: pointer;
 }
 
 
-@media (max-width:1024) {
-    .hero-caption .titlecard{
+@media (max-width:1024px) {
+    .hero-caption .titlecards{
         display: none;
     }
 
@@ -91,16 +91,22 @@ cursor: pointer;
     .hero-caption p{
         font-size: 12px;
         margin-bottom: 10px;
+        padding-right: 15px;
 
     }
     .caption-img{
         margin-bottom: 10PX;
         width: 40%;
     }
+    .btn img{
+        width: 20px;
+    }
     .hero-btns .btn img{
         width: 20px;
 
     }
+
+
     .more-cards{
         padding-left: 4%;
     }

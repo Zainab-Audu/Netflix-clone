@@ -1,0 +1,85 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("/src/assets/background_banner.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+}
+
+.navbar{
+   font-size: 14px;
+   color: #e5e5e5;
+
+}
+.navbar-left{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+   background-image: linear-gradient(180deg, rgba(0,0,0,0.7) 10%, transparent);
+
+}
+
+
+
+
+.content {
+  position: relative;
+  max-width: 600px;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sub-text {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+
+.form button {
+  background: rgb(218, 51, 51);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: rgb(95, 4, 4);
+}

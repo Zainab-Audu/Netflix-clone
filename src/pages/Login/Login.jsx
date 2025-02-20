@@ -1,24 +1,34 @@
-import './Login.css'
-import logo from '../../assets/logo.png'
-import { useState } from 'react';
-import { signUp,login } from '../../firebase';
+import "./Login.css";
+import logo from "../../assets/logo.png";
+import { useState } from "react";
+import { signUp, login } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [signState, setSignState] = useState("Sign In")
+  const [signState, setSignState] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const user_auth = async (event) => {
-    event.preventDefault
-    if (signState === "sign In") {
-      await login(email, password);
+const navigate = useNavigate()
 
+  const user_auth = async (event) => {
+    event.preventDefault();
+
+    if (!email && !password) {
+      alert("please provide a valid email and password");
+      navigate("/login");
+
+      return;
     }
-    else {
-      await signUp(name,email,password)
+
+    if (signState === "Sign In") {
+      await login(email, password);
+      navigate("/dashboard");
+    } else {
+      await signUp(name, email, password);
     }
-  }
+  };
 
   return (
     <div className="login">
@@ -29,7 +39,8 @@ const Login = () => {
           {signState === "Sign Up" ? (
             <input
               value={name}
-              onChange={(e) => {setName(e.target.value);
+              onChange={(e) => {
+                setName(e.target.value);
               }}
               type="text"
               placeholder="Your name"
@@ -40,19 +51,23 @@ const Login = () => {
 
           <input
             value={email}
-            onChange={(e) => {setEmail(e.target.value)
+            onChange={(e) => {
+              setEmail(e.target.value);
             }}
             type="email"
             placeholder="Email"
           />
           <input
             value={password}
-            onChange={(e) => {setPassword(e.target.value)
+            onChange={(e) => {
+              setPassword(e.target.value);
             }}
             type="password"
             placeholder="Password"
           />
-          <button onClick={user_auth} type='submit'>{signState}</button>
+          <button onClick={user_auth} type="submit">
+            {signState}
+          </button>
           <div className="form-help">
             <div className="remember">
               <input type="checkbox" />
@@ -67,7 +82,7 @@ const Login = () => {
               New to Netflix?{" "}
               <span
                 onClick={() => {
-                  setSignState("signUp");
+                  setSignState("Sign Up");
                 }}
               >
                 Sign Up Now!
@@ -89,6 +104,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

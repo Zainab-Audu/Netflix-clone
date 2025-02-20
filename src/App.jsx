@@ -1,3 +1,4 @@
+import Index from './pages/Home/Index';
 import Home from
   './pages/Home/Home'
 import Login from '../src/pages/Login/Login'
@@ -10,12 +11,11 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/player/:id"  element={<Player />} />
-        
+        <Route path="/" element={<Index />} />
+        <Route path="/dashboard" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/player/:id" element={<Player />} />
       </Routes>
-
     </div>
   );
 };

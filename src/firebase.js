@@ -1,26 +1,19 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import
-{
-    createUserWithEmailAndPassword,
-    getAuth,
-    signInWithEmailAndPassword,
-    signOut
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
-import
-{
-    addDoc,
-    collection,
-    getFirestore
-} from "firebase/firestore";
-
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDadwDeLY8AGM67xbDqKXl_Ue3ODt8gJww",
   authDomain: "netflix-clone-df4bf.firebaseapp.com",
   projectId: "netflix-clone-df4bf",
-  storageBucket: "netflix-clone-df4bf.firebasestorage.app",
+  storageBucket: "netflix-clone-df4bf.firebasestorage.com",
   messagingSenderId: "143924543470",
   appId: "1:143924543470:web:241de0f93a932160cc58ff",
   measurementId: "G-HSE31VQKRY",
@@ -32,37 +25,34 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const signUp = async (name, email, password) => {
-    try { 
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        const user = res.user;
-        await addDoc(collection(db, "user"), {
-            uid: user.uid,
-            name,
-            authProvider: "local",
-            email,
-        })
-    }
-    catch (error) {
-        console.log(error);
-        alert(error);
-        
-    }
-    
-}
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    await addDoc(collection(db, "user"), {
+      uid: user.uid,
+      name,
+      authProvider: "local",
+      email,
+    });
+  } catch (error) {
+    console.log(error);
+    alert(error);
+  }
+};
 
-const login = async (email,password) => {
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-    }
-    catch (error) {
-        console.log(error);
-        alert(error)
-        
-    }
-}
-const logout = () => {
+const login = async (email, password) => {
+  
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log(error);
+    alert(error);
+
     
-    signOut(auth);
-}
+  }
+};
+const logout = () => {
+  signOut(auth);
+};
 
 export { auth, db, login, signUp, logout };

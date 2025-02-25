@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
@@ -6,7 +5,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -41,18 +39,24 @@ const signUp = async (name, email, password) => {
 };
 
 const login = async (email, password) => {
-  
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("User signed in:", userCredential);
+      })
+      .catch((error) => {
+        console.log("Error signing in", error);
+        alert(error.message);
+      });
   } catch (error) {
-    console.log(error);
-    alert(error);
-
-    
+    console.error("Login failed:", error);
+    alert(error.message);
   }
-};
+}; 
+
 const logout = () => {
   signOut(auth);
 };
+
 
 export { auth, db, login, signUp, logout };

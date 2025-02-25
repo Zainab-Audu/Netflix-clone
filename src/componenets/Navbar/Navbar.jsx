@@ -2,20 +2,20 @@ import "./Navbar.css";
 import netflixlogo1 from "../../assets/card/netflixlogo1.png";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-
   const navRef = useRef();
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY >= 80) {
-        navRef.current.classList.add('nav-dark')
+        navRef.current.classList.add("nav-dark");
       } else {
         navRef.current.classList.remove("nav-dark");
       }
-    })
-  },[])
+    });
+  }, []);
 
   return (
     <div ref={navRef} className="navbar">
@@ -90,7 +90,7 @@ const Navbar = () => {
               d="m19.5 8.25-7.5 7.5-7.5-7.5"
             />
           </svg>
-          <div className="dropdown">sign up of Netflix</div>
+          <Link hrefLang="/" className="dropdown">Logout</Link>
         </div>
       </div>
     </div>

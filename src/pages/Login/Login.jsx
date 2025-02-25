@@ -27,6 +27,8 @@ const navigate = useNavigate()
       navigate("/dashboard");
     } else {
       await signUp(name, email, password);
+      navigate("/dashboard");
+
     }
   };
 
